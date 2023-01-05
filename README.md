@@ -1,6 +1,12 @@
-# KBench
+# K IOBench
 
-Various benchmark for storage and Kubernetes.
+Various benchmarks for Kubernetes storage.
+
+## TODOs
+
+- [ ] kustomize
+- [ ] add other tools
+- [ ] update the script
 
 ## FIO
 
@@ -182,7 +188,8 @@ The output will be printed out as well as saved into `<output_prefix>.summary`.
 
 ## License
 
-Copyright (c) 2021 Sheng Yang
+Portions Copyright (c) 2021 Sheng Yang
+Portions Copyright (c) 2022 Nikhil Reddy
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 

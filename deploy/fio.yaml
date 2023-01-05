@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: kbench
-        image: yasker/kbench:latest
+        image: ghcr.io/npalladium/k8s-iobench:main
         imagePullPolicy: Always
         env:
         #- name: QUICK_MODE  # for debugging

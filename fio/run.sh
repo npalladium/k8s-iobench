@@ -1,10 +1,12 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-set -e
+set -o errexit -o nounset -o pipefail
 
-CURRENT_DIR="$(dirname "$(readlink -f "$0")")"
+readonly CURRENT_DIR="$(dirname "$(readlink -f "$0")")"
 
-TEST_FILE=$1
+readonly TEST_FILE=$1
+readonly OUTPUT=$2
+readonly TEST_SIZE=$3
 
 # cmdline overrides the environment variable
 if [ -z "$TEST_FILE" ]; then
@@ -16,20 +18,18 @@ if [ -z "$TEST_FILE" ]; then
         exit 1
 fi
 
-if [ x"$CPU_IDLE_PROF" = x"enabled" ]; then
+if [ "$CPU_IDLE_PROF" = "enabled" ]; then
 	IDLE_PROF="--idle-prof=percpu"
 fi
 
-echo TEST_FILE: $TEST_FILE
+echo TEST_FILE: "$TEST_FILE"
 
-OUTPUT=$2
 if [ -z $OUTPUT ];
 then
 	OUTPUT=test_device
 fi
 echo TEST_OUTPUT_PREFIX: $OUTPUT
 
-TEST_SIZE=$3
 if [ -z "$TEST_SIZE" ]; then
        TEST_SIZE=$SIZE
 fi

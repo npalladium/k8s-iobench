@@ -1,7 +1,7 @@
-FROM ubuntu:20.04
+FROM bitnami/minideb:bullseye
+ARG PHORONIX_DEB "phoronix-test-suite_10.8.4_all.deb"
+RUN install_packages stress fio sysstat bonnie++ postmark ioping wget jq
 
-RUN apt update && apt install -y fio bash jq
-
-ADD ./fio/ /fio/
-WORKDIR ["/fio/"]
+COPY ./fio/ /fio/
+WORKDIR /fio/
 ENTRYPOINT ["bash", "/fio/run.sh"]
